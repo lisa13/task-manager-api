@@ -1,15 +1,10 @@
-const express = require('express');
-require('./db/mongoose');
-const User = require('./models/user');
-const Task = require('./models/task');
-const jwt = require('jsonwebtoken');
-const userRouter = require('./routers/user');
-const taskRouter = require('./routers/task');
-
-const app = express();
-app.use(express.json());
-
+const app = require('./app');
 const port = process.env.PORT;
+
+app.listen(port, () => {
+    console.log("server's running " + port);
+
+});
 
 
 //upload images with multer
@@ -19,7 +14,6 @@ const port = process.env.PORT;
 
 // })
 
-
 // app.post('/upload', upload.single('upload'), (req, res) => {
 //     try {
 //         res.send();
@@ -27,15 +21,6 @@ const port = process.env.PORT;
 //         console.log(err);
 //     }
 // })
-
-
-app.use(userRouter)
-app.use(taskRouter)
-
-app.listen(port, () => {
-    console.log("server's running " + port);
-
-});
 
 //finding the task of the user
 // const main = async () => {
